@@ -1,18 +1,18 @@
-import {createslice} from '@reduxjs/toolkit';
-import {uuidv4} from 'uuid';
+import {createSlice} from '@reduxjs/toolkit';
 
-const topicSlice = createslice({
-    name: 'topic',
+const topicsSlice = createSlice({
+    name: 'topics',
     initialState: {
         topics: {}
     },
     reducers: {
         addTopic: (state, action) => {
-            const newId = uuidv4();
-            state.topics[newId] = action.payload;
+            const {newId, name, icon} = action.payload;
+            state.topics[newId] = {name, icon}
+            console.log({...state.topics});
         }
     }
 });
 
-export const {addTopic} = topicSlice.actions;
-export default commentSlice.reducer;
+export const {addTopic} = topicsSlice.actions;
+export default topicsSlice.reducer;
