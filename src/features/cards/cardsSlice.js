@@ -3,13 +3,13 @@ import {createSlice} from '@reduxjs/toolkit';
 const cardsSlice = createSlice({
     name: 'cards',
     initialState: {
-        topics: {}
+        cards: {}
     },
     reducers: {
         addCards: (state, action) => {
             //card properties: id, front, back
-            const {newId, name, icon} = action.payload;
-            state.topics[newId] = {id: newId, name, icon, quizIds: []}
+            const {id, front, back} = action.payload;
+            state.cards[id] = {id,front,back};
         }
     }
 });
